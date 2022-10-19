@@ -1,5 +1,7 @@
 :DISKMGR_START
-@ECHO OFF&&CLS&&TITLE  Download from github.com/joshuacline&&COLOR 0B&&CALL:PAD_LINE&&ECHO                    Josh's Disk-Part Command-Wrapper&&CALL:PAD_LINE&&ECHO       WHOA^! THERE MATEY BE CAREFUL, THERE'S NO BRAKES ON THIS.
+@ECHO OFF&&Reg.exe query "HKU\S-1-5-19\Environment">NUL
+IF NOT %ERRORLEVEL% EQU 0 ECHO Right-Click ^& Run As Administrator&&PAUSE&&EXIT 0
+CLS&&TITLE  Download from github.com/joshuacline&&COLOR 0B&&CALL:PAD_LINE&&ECHO                    Josh's Disk-Part Command-Wrapper&&CALL:PAD_LINE&&ECHO       WHOA^! THERE MATEY BE CAREFUL, THERE'S NO BRAKES ON THIS.
 IF NOT DEFINED PROG_OPER CALL:DISK_QUERY&&ECHO  [DISK]  {I}nspect  {E}rase-Disk  {#}Change Disk-ID  {U}SB-Unplug&&CALL:PAD_LINE&&ECHO  [PARTITION]  {C}reate  {D}elete  {F}ormat  {M}ount/Unmount  {L}ock&&CALL:PAD_LINE
 ECHO                 Press (Enter) to Return to Previous Menu&&CALL SET "PROMPT_SET=SELECT"&&CALL:PROMPT_SET&&IF DEFINED PROG_OPER CALL:FILE_LIST>NUL
 IF DEFINED PROG_OPER IF NOT DEFINED SELECT SET PROG_OPER=
